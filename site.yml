@@ -1,0 +1,6 @@
+# The key value pairs found below are available within the templates.
+# {{site_name}}, {{url}}, {{copyright}}, ...
+
+:site_name: Arthur Templé
+:url: https://thorthur.github.io
+:copyright: 2018
