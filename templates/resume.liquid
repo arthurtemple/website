@@ -1,18 +1,157 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{lang}}">
+
   {% include "shared/head" %}
+  <head>
+    <link rel="stylesheet" href="/css/resume.css" type="text/css">
+  </head>
+
   <body id="{{slug}}">
-    <section id="wrapper">
-      {% include "shared/header" %}	
-	  
-	    <article>
-	      <h2>{{headline}}</h2>
-		    <section role="main">
-		      {{body}}
-		    </section>
-	    </article>
-	
+
+    <div class="container">
+
+      {% include "shared/header" %}
+
+    	<div class="row">
+
+        <div class="two columns details">
+          <img src="{{picture}}" class="picture" />
+      		<p><a href="{{other-language}}" class="language">{{text.switch-language}}</a></p>
+      		<p><a href="{{pdf}}" class="pdf">{{text.download-as-pdf}}</a></p>
+        </div>
+
+      	<div class="eight columns headline">
+      		<h1 class="name">{{name}}</h1>
+      		<h2 class="title">{{title}}</h2>
+      	</div>
+
+      	<div class="two columns column details">
+          <p class="birth">{{birth}}</p>
+      		<p><a href="mailto:{{email}}" class="email">{{email}}</a></p>
+        	<p><a href="{{website}}" class="website">{{website}}</a></p>
+      	</div>
+
+    	</div>
+
+    	<hr class="outer-separator">
+
+      <div class="row">
+
+        <div class="three columns">
+      		<h2><a id="skills" href="#skills" class="anchor">#</a> {{text.skills}}</h2>
+        </div>
+
+        <div class="nine columns skills" section="skills">
+          {% for skillgroup in skills %}
+          <h3 class="category">{{skillgroup.category}}</h3>
+          {% for skill in skillgroup.content %}
+      		<span class="keyword rating-{{skill.grade}}">{{skill.name}}</span><br>
+          {% endfor %}
+          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          {% endfor %}
+        </div>
+
+      </div>
+
+    	<hr class="outer-separator">
+
+    	<div class="row">
+
+      	<div class="three columns">
+      		<h2><a id="experience" href="#experience" class="anchor">#</a> {{text.experience}}</h2>
+      	</div>
+
+      	<div class="nine columns experience" section="experience">
+
+          {% for exp in experience %}
+  		    <h3 class="title">{{exp.title}}</h3>
+          <div>
+            <span class="when">{{exp.when | newline_to_br}}</span>
+            <span class="duration">{{exp.duration}}</span>
+          </div>
+          <div class="description">{{exp.description | newline_to_br}}</div>
+          <div class="keywords">
+            {% for skill in exp.skills %}
+            <span class="keyword">{{skill}}</span>
+            {% unless forloop.last %}&nbsp{% endunless %}
+            {% endfor %}
+          </div>
+
+          {% for project in exp.projects %}
+          <div class="project">
+            <h4 class="name">{{project.name}}</h4>
+            <p class="description">{{project.description | newline_to_br}}</p>
+            <div class="keywords">
+              {% for skill in project.skills %}
+              <span class="keyword">{{skill}}</span>
+              {% unless forloop.last %}&nbsp{% endunless %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          {% endfor %}
+      	</div>
+      </div>
+
+    	<hr class="outer-separator">
+
+    	<div class="row">
+
+      	<div class="three columns">
+      		<h2><a id="education" href="#education" class="anchor">#</a> {{text.education}}</h2>
+      	</div>
+
+      	<div class="nine columns education" section="education">
+
+          {% for ed in education %}
+          <div>
+            <span class="when">{{ed.when | newline_to_br}}</span>
+          </div>
+      		<h3 class="title">{{ed.diploma}}</h3>
+          <div class="where">{{ed.where}}</div>
+          <div class="description">{{ed.description | newline_to_br}}</div>
+          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          {% endfor %}
+      	</div>
+      </div>
+
+    	<hr class="outer-separator">
+
+      <div class="row">
+
+        <div class="three columns">
+      		<h2><a id="hobbies" href="#hobbies" class="anchor">#</a> {{text.hobbies}}</h2>
+        </div>
+
+        <div class="nine columns hobbies" section="hobbies">
+          {% for hobby in hobbies %}
+          <h3 class="title">{{hobby.title}}</h3>
+          <div class="description">{{hobby.description | newline_to_br}}</div>
+          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          {% endfor %}
+        </div>
+
+      </div>
+
+    	<div class="side-panel">
+      	<p><a href="#top" class="name">{{name}}</a></p>
+        <hr>
+        <div class="toc">
+          <a href="#skills">{{text.skills}}</a>
+      		<a href="#experience">{{text.experience}}</a>
+      		<a href="#education">{{text.education}}</a>
+      		<a href="#hobbies">{{text.hobbies}}</a>
+      	</div>
+    	</div>
+
+      <div class="row">
+      	<div class="twelve columns footer">
+      	   <p class="last-update">{{lastupdate}}</p>
+      	</div>
+      </div>
+
       {% include "shared/footer" %}
-    </section>
+    </div>
   </body>
 </html>

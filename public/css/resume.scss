@@ -1,0 +1,392 @@
+@charset "utf-8";
+
+@import 'base';
+
+/* Fonts */
+// Import Google Web Fonts
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
+$font-family: 'Open Sans', sans-serif;
+
+/* Colors */
+
+// Some subtle color palette
+$color-grenadine: #DE413A;
+$color-tawnyport: #5B2C36;
+$color-balletslipper: #EBCDD5;
+$color-butterum: #C58F69;
+$color-navypeony: #233B5D;
+$color-neutralgray: #8F9190;
+$color-shadedpruce: #09585D;
+$color-goldenlime: #9B9740;
+$color-marina: #5285C4;
+$color-autumnmaple: #C26225;
+
+// In layman terms
+$color-red: $color-grenadine;
+$color-purple: $color-tawnyport;
+$color-pink: $color-balletslipper;
+$color-brown: $color-butterum;
+$color-darkblue: $color-navypeony;
+$color-grey: $color-neutralgray;
+$color-darkgreen: $color-shadedpruce;
+$color-lightgreen: $color-goldenlime;
+$color-lightblue: $color-marina;
+$color-orange: $color-autumnmaple;
+$color-black: black;
+$color-white: white;
+$color-darkgrey: darken($color-grey, 35%);
+$color-lightgrey: lighten($color-grey, 38%);
+
+/* Global */
+
+body {
+	background-color: $color-lightgrey;
+	font-family: $font-family;
+	font-size: 100% !important;
+	line-height: 1.5em;
+	@media print {
+		background-color: $color-white;
+		font-size: 14pt;
+		line-height: 1.3em !important;
+		text-shadow: none !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+}
+
+a {
+	text-decoration: none;
+	padding: 1px 0.3em;
+	border-radius: 3px;
+	color: $color-orange;
+
+	&:hover {
+		background-color:	$color-orange;
+		color: $color-white !important;
+	}
+
+	@media print {
+		color: $color-black;
+	}
+}
+
+%separator {
+	border: none;
+  height: 1px;
+  color: $color-grey; /* old IE */
+  background-color: $color-grey; /* Modern Browsers */
+
+	@media print {
+		border-style: none;
+		margin-bottom: 2cm;
+		margin-top: 2cm;
+	}
+}
+
+.outer-separator {
+	@extend %separator;
+	margin: 3em 0 3em 0;
+}
+
+.inner-separator {
+	@extend %separator;
+	margin: 3.5em 0 1em 0;
+}
+
+.anchor {
+	position:absolute;
+	visibility: hidden;
+}
+
+.when {
+	background-color: $color-darkgrey;
+	color: darken($color-lightgrey, 10%);
+	font-size: 16px;
+	border-radius: 3px;
+	padding: 2px 0.5em;
+	margin-right: -0.3em;
+}
+
+.duration {
+	background-color: $color-brown;
+	color: $color-black;
+	font-size: 16px;
+	border-radius: 3px;
+	padding: 2px 0.5em;
+}
+
+.where {
+	color: darken($color-orange, 10%);
+	font-size: 16px;
+	// padding: 2px 0.5em;
+}
+
+.keywords {
+	clear: both;
+	padding-left: 0.2em;
+	margin-left: 1.5em;
+	margin-top: 1em;
+
+	@media print {
+		line-height: 1.3em !important;
+	}
+
+	.keyword {
+		display: inline-block;
+		padding: 2px 5px;
+		padding-top: 1px;
+		border-radius: 3px;
+		white-space:nowrap;
+		color: $color-darkgrey;
+		font-size: 95%;
+
+		box-shadow: 1px 1px 6px $color-grey;
+		border-color: $color-grey;
+		background-color: $color-lightgrey;
+
+		&:hover {
+			box-shadow: 1px 1px 6px $color-grey;
+			border-color: $color-lightgrey;
+			background-color: $color-darkgrey;
+			color: $color-lightgrey;
+		}
+
+		@media print {
+			font-size: 100%;
+		}
+	}
+}
+
+.title {
+	margin-top: 1em;
+	font-size: 140%;
+	&:first-child {
+		margin-top: 0.2em;
+	}
+	@media print {
+		font-size: 20pt !important;
+		padding-top: 1.5em;
+	}
+}
+
+.description {
+	font-style: italic;
+}
+
+/* Headline */
+
+.headline {
+	margin-top: 5.6em;
+	padding-bottom: 2em;
+	text-align: center;
+
+	.name {
+		margin-bottom: 0 !important;
+		font-size: 2.9em !important;
+		white-space: nowrap;
+	}
+
+	.title {
+		padding-bottom: 0.3em;
+		margin-top: 1.2em;
+		white-space: nowrap;
+		font-size: 1.9em !important;
+		@media print {
+			font-size: 15pt;
+		}
+	}
+}
+
+/* Details */
+
+.details {
+	margin-top: 5.6em;
+	font-size: 90%;
+	line-height: 1.3em;
+	white-space: nowrap;
+
+	p {
+		margin-bottom: 0.9em;
+		padding-left: 0.3em;
+	}
+
+	.language {
+		@extend .noprint;
+	}
+
+	.pdf {
+		@extend .noprint;
+	}
+
+	.birth {
+		padding-left: 0.8em;
+	}
+}
+
+.picture {
+	max-width: 100%;
+	height: auto;
+	max-height: 180px;
+	border-radius: 8%;
+	margin-bottom: 0.7em;
+}
+
+/* Skills */
+
+.skills {
+
+	.category {
+		margin-top: 1em;
+		&:first-child {
+			margin-top: 0.2em;
+		}
+		@media print {
+			font-size: 20pt !important;
+		}
+	}
+
+	@for $i from 1 through 5 {
+		.rating-#{$i}:before {
+			content: str-insert(str-slice("▢▢▢▢▢", 1, 5 - $i), str-slice("▣▣▣▣▣", 1, $i), 0);
+			padding-right: 1em;
+		}
+	}
+}
+
+/* Experience */
+
+.experience {
+	.description {
+		margin-top: 1em;
+		@media print {
+			font-size: 20pt !important;
+			padding-top: 1.5em;
+		}
+	}
+	.project {
+		.name {
+			padding-top: 0.5em;
+			margin-bottom: 0.1em;
+			font-weight: 600;
+			font-size: 120%;
+
+			@media print {
+				font-size: 20pt !important;
+				padding-bottom: 0.5em;
+				padding-top: 0.6em;
+			}
+		}
+		.description {
+			margin-top: 0.5em;
+			@media print {
+				font-size: 20pt !important;
+				padding-top: 1.5em;
+			}
+		}
+	}
+}
+
+/* Education */
+
+.education {
+	.title {
+		margin-top: 0.2em;
+		margin-bottom: 0.2em;
+		@media print {
+			font-size: 20pt !important;
+		}
+	}
+}
+
+/* Hobbies */
+
+.hobbies {
+	.title {
+		margin-top: 1em;
+		&:first-child {
+			margin-top: 0.2em;
+		}
+		@media print {
+			font-size: 20pt !important;
+		}
+	}
+	.description {
+		font-style: normal;
+	}
+}
+
+/* Side panel */
+
+.side-panel {
+	@extend .noprint;
+	@media only screen and (max-width: 1450px) {
+		display: none;
+	}
+	background-color: darken($color-darkgrey, 20%);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 200px;
+	padding: 3.5em 0px;
+	.name {
+		color: $color-brown;
+		font-size: 1.4em;
+		line-height: 1.3em;
+		text-align: center;
+		margin: 0;
+		margin-bottom: 0.5em;
+		display: block;
+		border-radius: 0;
+		padding-left: 0;
+		&:hover {
+			background-color: transparent;
+			color: $color-white !important;
+		}
+	}
+	.toc {
+		padding: 0.5em 0px;
+		margin-bottom: 2em;
+		a {
+			display: block;
+			color: $color-lightgrey !Important;
+			font-size: 12px;
+			border-radius: 0;
+			padding-left: 22px;
+			text-transform: uppercase;
+			letter-spacing:1px;
+			&:hover {
+				background-color: $color-grey;
+				color: $color-white !important;
+			}
+		}
+	}
+	hr {
+		border-color: $color-darkgrey;
+		margin: 1.7em 10px;
+		margin-right: 20px;
+	}
+}
+
+/* Footer */
+.footer {
+	@extend .noprint;
+	text-align: right;
+	margin-bottom: -5px;
+}
+
+footer {
+	@extend .noprint;
+}
+
+/* Print */
+
+@page {
+	margin: 1.5cm 1cm 1.5cm 1cm;
+}
+@media print and (color) {
+	* {
+		-webkit-print-color-adjust: exact;
+		print-color-adjust: exact;
+	}
+}

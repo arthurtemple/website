@@ -1,0 +1,122 @@
+:headline: CV
+:lang: fr
+:lastupdate: Mis à jour le 13 février 2018
+
+:name: Arthur Templé
+:title: Développement logiciel
+:email: arthur.temple@gmail.com
+:website: https://thorthur.github.io
+:birth: Né le 27/01/1990
+:other-language: cv
+:picture: images/cv.jpg
+:pdf: pdf/cv-fr.pdf
+
+:experience:
+  - when: Avril 2016 - Février 2018
+    where: Nantes
+    duration: 22 mois
+    title: Développeur et associé à Spooky Games
+    url: https://www.spooky.games/fr
+    description: |
+      Studio de jeux vidéo indépendant.
+      Co-création du studio.
+      Conception, développement et déploiement de tout ce qui touche au logiciel.
+      Installation et maintenance de tout ce qui touche au web.
+      Partage des activités administrative et de communication.
+
+      Des jeux sortis !
+    skills: [Java, OpenGL, Android, gradle, git, nginx, Jenkins]
+    projects:
+      - name: Sacrifices
+        description: |
+          Un "god game" sur mobile.
+          Régnez sur un village perdu dans la jungle mésoaméricaine et aidez ses habitants à affronter les dangers qu’elle renferme.
+        url: https://www.spooky.games/sacrifices
+        skills: [Java, libgdx, OpenGL, Android, iOS, gradle]
+      - name: Prototypes de jeu
+        description: Différents prototypes à fin d'expérimentation.
+        url: https://www.spooky.games/fr/games
+        skills: [Godot, C++, scons]
+      - name: Librairies open source
+        description: Principalement liés à l'intégration de plugins avec le framework libgdx.
+        url: https://github.com/spookygames
+        skills: [Java, libgdx, robovm, gradle]
+  - when: Septembre 2013 - Avril 2016
+    where: Nantes
+    duration: 30 mois
+    title: Développeur à Meteodyn
+    description:
+    skills: [C#, Winforms, REST, Visual Studio]
+    projects:
+      - name: Meteodyn Forecast
+        description: Développement d'une nouvelle version de Meteodyn Forecast, logiciel de prévision de la production énergétique éolienne basé sur la CFD (Computational Fluid Dynamics).
+        url: https://meteodyn.com/logiciels/meteodyn-forecast-cfd-prevision-production-energie/
+        skills: [C#, Winforms, Visual Studio]
+      - name: Plateforme de modélisation et gestion de ferme éolienne (projet privé)
+        description: Conception d'une API REST ainsi que développement de ses implementations côté client et serveur.
+        skills: [C#, REST, Nancy, RestSharp]
+  - when: Février 2013 - Juillet 2013
+    where: Kehl, Allemagne
+    duration: 6 mois
+    title: Stagiaire développeur à Actimage
+    description: Évolution d'Actelin, application mobile d'aide à la décision pour diabétiques de types 1 et 2.
+    url: https://www.actimage.com/fr/references/actelin/
+    skills: [Android, iOS, Python, Turbogears]
+
+:hobbies:
+  - title: Sport
+    description: |
+      - Ultimate
+      - Badminton
+      - Football
+
+:skills:
+  - category: Programmation
+    content:
+      - name: Java
+        grade: 5
+      - name: C#
+        grade: 4
+      - name: Écosystème Java
+        grade: 4
+      - name: C
+        grade: 3
+      - name: C++
+        grade: 2
+  - category: Langues
+    content:
+      - name: Français
+        grade: 5
+      - name: Anglais (TOEIC 960 en 2012)
+        grade: 4
+      - name: Espagnol
+        grade: 2
+  - category: Divers
+    content:
+      - name: Permis B
+
+:education:
+  - when: 2010 - 2013
+    diploma: Diplôme d'ingénieur en Informatique
+    where: INSA Rennes
+    description:
+  - when: 2012
+    diploma: MSc, Computer Science and Engineering
+    where: Aalto University (Finlande)
+    description: Échange Erasmus, premier semestre 2012-2013.
+  - when: 2008 - 2010
+    diploma: CPGE filière PTSI puis PT* (Physique - Technologie)
+    where: Lycée Eugène Livet, Nantes (France)
+    description:
+  - when: 2008
+    diploma: Baccalauréat S, mention Bien
+    where: Lycée George Clemenceau, Nantes
+    description:
+
+:text:
+  switch-language: In English
+  download-as-pdf: Télécharger le PDF
+  experience: Expériences
+  hobbies: Loisirs
+  skills: Compétences
+  education: Formation
