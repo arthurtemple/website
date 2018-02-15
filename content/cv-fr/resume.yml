@@ -1,6 +1,6 @@
 :headline: CV
 :lang: fr
-:lastupdate: Mis à jour le 13 février 2018
+:lastupdate: Mis à jour le 14 février 2018
 
 :name: Arthur Templé
 :title: Développement logiciel
@@ -9,10 +9,12 @@
 :birth: Né le 27/01/1990
 :other-language: cv
 :picture: images/cv.jpg
+:picture_alt: images/cv2.jpg
 :pdf: pdf/cv-fr.pdf
 
 :experience:
   - when: Avril 2016 - Février 2018
+    when-short: 2016 - 2018
     where: Nantes
     duration: 22 mois
     title: Développeur et associé à Spooky Games
@@ -24,7 +26,8 @@
       Installation et maintenance de tout ce qui touche au web.
       Partage des activités administrative et de communication.
 
-      Des jeux sortis !
+      Des jeux publiés !
+    description-short: Co-création et développement logiciel dans un studio de jeux vidéo indépendant.
     skills: [Java, OpenGL, Android, gradle, git, nginx, Jenkins]
     projects:
       - name: Sacrifices
@@ -42,10 +45,12 @@
         url: https://github.com/spookygames
         skills: [Java, libgdx, robovm, gradle]
   - when: Septembre 2013 - Avril 2016
+    when-short: 2013 - 2016
     where: Nantes
     duration: 30 mois
     title: Développeur à Meteodyn
     description:
+    description-short: Client lourd en C#/Winforms puis API RESTful avec implémentations client/serveur.
     skills: [C#, Winforms, REST, Visual Studio]
     projects:
       - name: Meteodyn Forecast
@@ -53,22 +58,29 @@
         url: https://meteodyn.com/logiciels/meteodyn-forecast-cfd-prevision-production-energie/
         skills: [C#, Winforms, Visual Studio]
       - name: Plateforme de modélisation et gestion de ferme éolienne (projet privé)
-        description: Conception d'une API REST ainsi que développement de ses implementations côté client et serveur.
+        description: Conception d'une API RESTful ainsi que développement de ses implementations côté client et serveur.
         skills: [C#, REST, Nancy, RestSharp]
   - when: Février 2013 - Juillet 2013
+    when-short: 2013
     where: Kehl, Allemagne
     duration: 6 mois
     title: Stagiaire développeur à Actimage
     description: Évolution d'Actelin, application mobile d'aide à la décision pour diabétiques de types 1 et 2.
+    description-short: Évolution d'Actelin, application mobile d'aide à la décision pour diabétiques de types 1 et 2.
     url: https://www.actimage.com/fr/references/actelin/
     skills: [Android, iOS, Python, Turbogears]
 
 :hobbies:
   - title: Sport
     description: |
-      - Ultimate
-      - Badminton
-      - Football
+      Ultimate
+      Badminton
+      Football
+  - title: Littérature
+    description: |
+      Américaine
+      Russe
+      Inattendue
 
 :skills:
   - category: Programmation
@@ -77,17 +89,13 @@
         grade: 5
       - name: C#
         grade: 4
-      - name: Écosystème Java
-        grade: 4
-      - name: C
-        grade: 3
-      - name: C++
+      - name: C/C++
         grade: 2
   - category: Langues
     content:
       - name: Français
         grade: 5
-      - name: Anglais (TOEIC 960 en 2012)
+      - name: Anglais
         grade: 4
       - name: Espagnol
         grade: 2
@@ -102,11 +110,12 @@
     description:
   - when: 2012
     diploma: MSc, Computer Science and Engineering
-    where: Aalto University (Finlande)
+    where: Aalto University, Espoo (Finlande)
     description: Échange Erasmus, premier semestre 2012-2013.
   - when: 2008 - 2010
-    diploma: CPGE filière PTSI puis PT* (Physique - Technologie)
-    where: Lycée Eugène Livet, Nantes (France)
+    diploma: CPGE filière PTSI/PT*
+    description: Physique - Technologie.
+    where: Lycée Eugène Livet, Nantes
     description:
   - when: 2008
     diploma: Baccalauréat S, mention Bien

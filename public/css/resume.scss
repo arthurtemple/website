@@ -6,6 +6,7 @@
 // Import Google Web Fonts
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 $font-family: 'Open Sans', sans-serif;
+$font-family-print: 'Georgia', sans-serif;
 
 /* Colors */
 
@@ -44,9 +45,11 @@ body {
 	font-family: $font-family;
 	font-size: 100% !important;
 	line-height: 1.5em;
+
 	@media print {
 		background-color: $color-white;
-		font-size: 14pt;
+		font-family: $font-family-print;
+		font-size: 12pt;
 		line-height: 1.3em !important;
 		text-shadow: none !important;
 		margin: 0 !important;
@@ -57,16 +60,19 @@ body {
 a {
 	text-decoration: none;
 	padding: 1px 0.3em;
-	border-radius: 3px;
-	color: $color-orange;
-
-	&:hover {
-		background-color:	$color-orange;
-		color: $color-white !important;
-	}
 
 	@media print {
 		color: $color-black;
+	}
+
+	@media not print {
+		border-radius: 3px;
+		color: $color-orange;
+
+		&:hover {
+			background-color:	$color-orange;
+			color: $color-white !important;
+		}
 	}
 }
 
@@ -85,20 +91,30 @@ a {
 
 .outer-separator {
 	@extend %separator;
+	@extend .noprint;
 	margin: 3em 0 3em 0;
 }
 
 .inner-separator {
 	@extend %separator;
+	@extend .noprint;
 	margin: 3.5em 0 1em 0;
 }
 
 .anchor {
-	position:absolute;
+	position: absolute;
 	visibility: hidden;
 }
 
+.when-short {
+	@extend .print-only;
+	float: left;
+	vertical-align: middle;
+	width: 6em;
+}
+
 .when {
+	@extend .noprint;
 	background-color: $color-darkgrey;
 	color: darken($color-lightgrey, 10%);
 	font-size: 16px;
@@ -108,6 +124,7 @@ a {
 }
 
 .duration {
+	@extend .noprint;
 	background-color: $color-brown;
 	color: $color-black;
 	font-size: 16px;
@@ -121,51 +138,31 @@ a {
 	// padding: 2px 0.5em;
 }
 
-.keywords {
-	clear: both;
-	padding-left: 0.2em;
-	margin-left: 1.5em;
-	margin-top: 1em;
-
+.section-title {
 	@media print {
-		line-height: 1.3em !important;
-	}
-
-	.keyword {
-		display: inline-block;
-		padding: 2px 5px;
-		padding-top: 1px;
-		border-radius: 3px;
-		white-space:nowrap;
-		color: $color-darkgrey;
-		font-size: 95%;
-
-		box-shadow: 1px 1px 6px $color-grey;
-		border-color: $color-grey;
+		font-size: 16pt !important;
+		text-align: center;
+		width: 60%;
+		margin-left: 20%;
 		background-color: $color-lightgrey;
-
-		&:hover {
-			box-shadow: 1px 1px 6px $color-grey;
-			border-color: $color-lightgrey;
-			background-color: $color-darkgrey;
-			color: $color-lightgrey;
-		}
-
-		@media print {
-			font-size: 100%;
-		}
+		border-radius: 8px;
+		padding: 2px 0;
+		margin-top: 1.2em;
+		margin-bottom: 0.8em;
 	}
 }
 
 .title {
-	margin-top: 1em;
-	font-size: 140%;
-	&:first-child {
-		margin-top: 0.2em;
+	@media not print {
+		margin-top: 1em;
+		font-size: 140%;
+		&:first-child {
+			margin-top: 0.2em;
+		}
 	}
 	@media print {
-		font-size: 20pt !important;
-		padding-top: 1.5em;
+		font-size: 14pt !important;
+		padding-top: 0.3em;
 	}
 }
 
@@ -180,6 +177,13 @@ a {
 	padding-bottom: 2em;
 	text-align: center;
 
+	@media print {
+		margin-top: -5.5em;
+		margin-left: 1em;
+		text-align: left;
+		padding-bottom: 0em;
+	}
+
 	.name {
 		margin-bottom: 0 !important;
 		font-size: 2.9em !important;
@@ -191,8 +195,11 @@ a {
 		margin-top: 1.2em;
 		white-space: nowrap;
 		font-size: 1.9em !important;
+		font-weight: bold;
 		@media print {
-			font-size: 15pt;
+			padding-top: 0.8em;
+			margin-top: 0.4em;
+			font-size: 16pt !important;
 		}
 	}
 }
@@ -223,7 +230,21 @@ a {
 	}
 }
 
+.details-right {
+	@media print {
+		text-align: right;
+		max-width: 100%;
+		margin-top: -8.5em;
+
+		a {
+			padding: 0;
+			// font-family: $font-family;
+		}
+	}
+}
+
 .picture {
+	@extend .noprint;
 	max-width: 100%;
 	height: auto;
 	max-height: 180px;
@@ -235,13 +256,40 @@ a {
 
 .skills {
 
+	.skill {
+		@media print {
+			// Emulate columns
+			width: 33%;
+		  float: left;
+		  box-sizing: border-box;
+
+			vertical-align: top;
+
+			// Hack
+			&:nth-child(3) {
+				text-align: center;
+
+				.keyword {
+					padding-left: 0 !important;
+				}
+			}
+		}
+	}
+
 	.category {
 		margin-top: 1em;
 		&:first-child {
 			margin-top: 0.2em;
 		}
 		@media print {
-			font-size: 20pt !important;
+			font-size: 14pt !important;
+			text-align: center;
+		}
+	}
+
+	.keyword {
+		@media print {
+			padding-left: 2.5em;
 		}
 	}
 
@@ -256,31 +304,88 @@ a {
 /* Experience */
 
 .experience {
-	.description {
-		margin-top: 1em;
+
+	.exp {
 		@media print {
-			font-size: 20pt !important;
-			padding-top: 1.5em;
+			&:first-child {
+				margin-top: -1.4em;
+			}
 		}
 	}
+	.title {
+		@media print {
+			padding-left: 6em;
+		}
+	}
+	.when-short {
+		margin-top: 0.4em;
+		text-align: right;
+	}
+	.description-short {
+		@extend .print-only;
+		margin-top: 1em;
+		font-style: italic;
+	}
+	.description {
+		@extend .noprint;
+		margin-top: 1em;
+	}
+	.url {
+		@extend .noprint;
+	}
 	.project {
+		@extend .noprint;
+			margin-left: 1.2em;
 		.name {
 			padding-top: 0.5em;
 			margin-bottom: 0.1em;
 			font-weight: 600;
 			font-size: 120%;
-
-			@media print {
-				font-size: 20pt !important;
-				padding-bottom: 0.5em;
-				padding-top: 0.6em;
-			}
 		}
 		.description {
 			margin-top: 0.5em;
+		}
+	}
+
+	.keywords {
+		clear: both;
+		padding-left: 0.2em;
+		margin-left: 1.5em;
+		margin-top: 1em;
+
+		@media print {
+			text-align: right;
+			margin-top: 0.2em;
+		}
+
+		.keyword {
+			display: inline-block;
+			padding: 2px 5px;
+			padding-top: 1px;
+			white-space:nowrap;
+
+			@media not print {
+				border-radius: 3px;
+				color: $color-darkgrey;
+				font-size: 95%;
+
+				box-shadow: 1px 1px 6px $color-grey;
+				border-color: $color-grey;
+				background-color: $color-lightgrey;
+
+				&:hover {
+					box-shadow: 1px 1px 6px $color-grey;
+					border-color: $color-lightgrey;
+					background-color: $color-darkgrey;
+					color: $color-lightgrey;
+				}
+			}
+
 			@media print {
-				font-size: 20pt !important;
-				padding-top: 1.5em;
+				font-size: 11pt;
+				background-color: $color-lightgrey;
+				border-radius: 1px;
+				padding: 2px 2px;
 			}
 		}
 	}
@@ -289,11 +394,36 @@ a {
 /* Education */
 
 .education {
-	.title {
-		margin-top: 0.2em;
-		margin-bottom: 0.2em;
-		@media print {
-			font-size: 20pt !important;
+
+	.ed {
+
+		.title {
+			margin-top: 0.2em;
+			margin-bottom: 0.2em;
+			@media print {
+				padding-left: 7em;
+				font-size: 12pt !important;
+				font-weight: normal;
+			}
+		}
+
+		.when-short {
+			padding-top: 0.2em;
+			text-align: right;
+		}
+
+		.where {
+			@media print {
+				color: $color-black;
+				margin-top: -1.5em;
+				float: right;
+				font-size: 11pt;
+				font-style: italic;
+			}
+		}
+
+		.description {
+			@extend .noprint;
 		}
 	}
 }
@@ -301,17 +431,32 @@ a {
 /* Hobbies */
 
 .hobbies {
-	.title {
-		margin-top: 1em;
-		&:first-child {
-			margin-top: 0.2em;
-		}
+
+	.hobby {
 		@media print {
-			font-size: 20pt !important;
+			// Emulate columns
+			width: 50%;
+			float: left;
+			box-sizing: border-box;
+
+			vertical-align: top;
 		}
-	}
-	.description {
-		font-style: normal;
+
+		.title {
+			margin-top: 1em;
+			@media print {
+				margin-top: 0em;
+				text-align: center;
+				font-size: 13pt;
+			}
+		}
+
+		.description {
+			font-style: normal;
+			@media print {
+				padding-left: 7em;
+			}
+		}
 	}
 }
 
@@ -366,17 +511,24 @@ a {
 		margin: 1.7em 10px;
 		margin-right: 20px;
 	}
+	.last-update {
+		@extend .noprint;
+		text-align: center;
+		margin-top: 310%;
+		color: $color-lightgrey !Important;
+		font-size: 12px;
+	}
 }
 
 /* Footer */
-.footer {
-	@extend .noprint;
-	text-align: right;
-	margin-bottom: -5px;
-}
-
 footer {
 	@extend .noprint;
+	margin-top: 5.8em;
+	font-size: 14px;
+	text-align: center;
+	a {
+		padding: 0;
+	}
 }
 
 /* Print */
@@ -384,6 +536,7 @@ footer {
 @page {
 	margin: 1.5cm 1cm 1.5cm 1cm;
 }
+
 @media print and (color) {
 	* {
 		-webkit-print-color-adjust: exact;

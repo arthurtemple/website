@@ -1,9 +1,6 @@
 
 /* Print utilities */
 .print-only {
-  @media print {
-    display: block;
-  }
   @media not print {
     display: none;
   }
@@ -12,8 +9,5 @@
 .noprint {
   @media print {
     display: none;
-  }
-  @media not print {
-    display: block;
   }
 }

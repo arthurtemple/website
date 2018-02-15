@@ -14,18 +14,18 @@
 
     	<div class="row">
 
-        <div class="two columns details">
-          <img src="{{picture}}" class="picture" />
+        <div class="two columns details details-left">
+          <img src="{{picture}}" class="picture" onmouseover="this.src='{{picture_alt}}'" onmouseout="this.src='{{picture}}'" />
       		<p><a href="{{other-language}}" class="language">{{text.switch-language}}</a></p>
       		<p><a href="{{pdf}}" class="pdf">{{text.download-as-pdf}}</a></p>
         </div>
 
       	<div class="eight columns headline">
       		<h1 class="name">{{name}}</h1>
-      		<h2 class="title">{{title}}</h2>
+      		<p class="title">{{title}}</p>
       	</div>
 
-      	<div class="two columns column details">
+      	<div class="two columns column details details-right">
           <p class="birth">{{birth}}</p>
       		<p><a href="mailto:{{email}}" class="email">{{email}}</a></p>
         	<p><a href="{{website}}" class="website">{{website}}</a></p>
@@ -38,16 +38,18 @@
       <div class="row">
 
         <div class="three columns">
-      		<h2><a id="skills" href="#skills" class="anchor">#</a> {{text.skills}}</h2>
+      		<h2 class="section-title"><a id="skills" href="#skills" class="anchor">#</a> {{text.skills}}</h2>
         </div>
 
         <div class="nine columns skills" section="skills">
           {% for skillgroup in skills %}
-          <h3 class="category">{{skillgroup.category}}</h3>
-          {% for skill in skillgroup.content %}
-      		<span class="keyword rating-{{skill.grade}}">{{skill.name}}</span><br>
-          {% endfor %}
-          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          <div class="skill">
+            <h3 class="category">{{skillgroup.category}}</h3>
+            {% for skill in skillgroup.content %}
+        		<span class="keyword rating-{{skill.grade}}">{{skill.name}}</span><br>
+            {% endfor %}
+            {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          </div>
           {% endfor %}
         </div>
 
@@ -58,38 +60,48 @@
     	<div class="row">
 
       	<div class="three columns">
-      		<h2><a id="experience" href="#experience" class="anchor">#</a> {{text.experience}}</h2>
+      		<h2 class="section-title"><a id="experience" href="#experience" class="anchor">#</a> {{text.experience}}</h2>
       	</div>
 
       	<div class="nine columns experience" section="experience">
 
           {% for exp in experience %}
-  		    <h3 class="title">{{exp.title}}</h3>
-          <div>
-            <span class="when">{{exp.when | newline_to_br}}</span>
-            <span class="duration">{{exp.duration}}</span>
-          </div>
-          <div class="description">{{exp.description | newline_to_br}}</div>
-          <div class="keywords">
-            {% for skill in exp.skills %}
-            <span class="keyword">{{skill}}</span>
-            {% unless forloop.last %}&nbsp{% endunless %}
-            {% endfor %}
-          </div>
-
-          {% for project in exp.projects %}
-          <div class="project">
-            <h4 class="name">{{project.name}}</h4>
-            <p class="description">{{project.description | newline_to_br}}</p>
+          <div class="exp">
+    		    <div class="when-short">{{exp.when-short}}</div>
+            <h3 class="title">{{exp.title}}</h3>
+            <div>
+              <span class="when">{{exp.when | newline_to_br}}</span>
+              <span class="duration">{{exp.duration}}</span>
+            </div>
+            <div class="description-short">{{exp.description-short}}</div>
+            <div class="description">{{exp.description | newline_to_br}}</div>
+            {% if exp.url %}
+          	<p class="url"><a href="{{exp.url}}">{{exp.url}}</a></p>
+            {% endif %}
             <div class="keywords">
-              {% for skill in project.skills %}
+              {% for skill in exp.skills %}
               <span class="keyword">{{skill}}</span>
               {% unless forloop.last %}&nbsp{% endunless %}
               {% endfor %}
             </div>
+
+            {% for project in exp.projects %}
+            <div class="project">
+              <h4 class="name">{{project.name}}</h4>
+              <p class="description">{{project.description | newline_to_br}}</p>
+              {% if project.url %}
+            	<p class="url"><a href="{{project.url}}">{{project.url}}</a></p>
+              {% endif %}
+              <div class="keywords">
+                {% for skill in project.skills %}
+                <span class="keyword">{{skill}}</span>
+                {% unless forloop.last %}&nbsp{% endunless %}
+                {% endfor %}
+              </div>
+            </div>
+            {% endfor %}
+            {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
           </div>
-          {% endfor %}
-          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
           {% endfor %}
       	</div>
       </div>
@@ -99,19 +111,22 @@
     	<div class="row">
 
       	<div class="three columns">
-      		<h2><a id="education" href="#education" class="anchor">#</a> {{text.education}}</h2>
+      		<h2 class="section-title"><a id="education" href="#education" class="anchor">#</a> {{text.education}}</h2>
       	</div>
 
       	<div class="nine columns education" section="education">
 
           {% for ed in education %}
-          <div>
-            <span class="when">{{ed.when | newline_to_br}}</span>
-          </div>
-      		<h3 class="title">{{ed.diploma}}</h3>
-          <div class="where">{{ed.where}}</div>
-          <div class="description">{{ed.description | newline_to_br}}</div>
-          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          <div class="ed">
+    		    <div class="when-short">{{ed.when}}</div>
+        		<h3 class="title">{{ed.diploma}}</h3>
+            <div>
+              <span class="when">{{ed.when | newline_to_br}}</span>
+            </div>
+            <div class="where">{{ed.where}}</div>
+            <div class="description">{{ed.description | newline_to_br}}</div>
+            {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+        	</div>
           {% endfor %}
       	</div>
       </div>
@@ -121,14 +136,16 @@
       <div class="row">
 
         <div class="three columns">
-      		<h2><a id="hobbies" href="#hobbies" class="anchor">#</a> {{text.hobbies}}</h2>
+      		<h2 class="section-title"><a id="hobbies" href="#hobbies" class="anchor">#</a> {{text.hobbies}}</h2>
         </div>
 
         <div class="nine columns hobbies" section="hobbies">
           {% for hobby in hobbies %}
-          <h3 class="title">{{hobby.title}}</h3>
-          <div class="description">{{hobby.description | newline_to_br}}</div>
-          {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          <div class="hobby">
+            <h3 class="title">{{hobby.title}}</h3>
+            <div class="description">{{hobby.description | newline_to_br}}</div>
+            {% unless forloop.last %}<hr class="inner-separator">{% endunless %}
+          </div>
           {% endfor %}
         </div>
 
@@ -143,15 +160,13 @@
       		<a href="#education">{{text.education}}</a>
       		<a href="#hobbies">{{text.hobbies}}</a>
       	</div>
+
+        <p class="last-update">{{lastupdate}}</p>
+
     	</div>
 
-      <div class="row">
-      	<div class="twelve columns footer">
-      	   <p class="last-update">{{lastupdate}}</p>
-      	</div>
-      </div>
-
       {% include "shared/footer" %}
+
     </div>
   </body>
 </html>

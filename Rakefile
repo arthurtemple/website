@@ -6,8 +6,12 @@ task :dev do
 end
 
 task :export do
+	# Hack: protect submodule from oblivion
+	%x[mv output/.git tmp_git_submodule]
 	# TODO Use proper bonsai from ruby
 	%x[bonsai --repot]
+	# Hack, part II: bring back submodule
+	%x[mv tmp_git_submodule output/.git]
 end
 
 task :push do
@@ -24,10 +28,18 @@ task :push do
 
 	# Push submodules
 	%x[git submodule update]
-	%x[git submodule foreach git checkout master && git add -A && git commit -m "#{message}" && git push #{remote} #{branch}]
+	%x[git submodule foreach "git checkout master && git add -A && git commit -m '#{message}' && git push #{remote} #{branch}"]
 
 	# Push root
 	%x[git push #{remote} #{branch}]
+end
+
+task :devprint do
+  require 'watch'
+	Watch.new("{content,templates,public}/**/*") {
+		Rake::Task["cvpdf"].invoke
+		Rake::Task["cvpdf"].reenable
+	}
 end
 
 task :cvpdf => [:export] do
@@ -47,6 +59,12 @@ task :cvpdf => [:export] do
 		Rack::Handler.default.run(app, :Port => 5000, Logger: WEBrick::Log.new(File.open(File::NULL, 'w')), AccessLog: []) do
 			inner_server = Process.pid
 			fork {
+				PDFKit.configure do |config|
+				  config.default_options = {
+				    :page_size => 'A4',
+				    :print_media_type => true
+				  }
+				end
 				puts 'Print CV (English)'
 				PDFKit.new('http://localhost:5000/cv').to_file('public/pdf/cv.pdf')
 				puts 'Print CV (French)'

@@ -1,6 +1,6 @@
 :headline: Résumé
 :lang: en
-:lastupdate: Updated 13 February 2018
+:lastupdate: Updated 14 February 2018
 
 :name: Arthur Templé
 :title: Software Engineer
@@ -9,22 +9,25 @@
 :birth: Born 27/01/1990
 :other-language: cv-fr
 :picture: images/cv.jpg
+:picture_alt: images/cv2.jpg
 :pdf: pdf/cv.pdf
 
 :experience:
   - when: April 2016 - February 2018
+    when-short: 2016 - 2018
     where: Nantes, France
     duration: 22 months
     title: Developer and partner at Spooky Games
     url: https://www.spooky.games
     description: |
       Independent video game studio.
-      Co-creation of the studio.
+      Co-foundation of the studio.
       Conception, development, deployment of everything software.
       Installation of everything web-related.
       A share of the Public Relations + Administrative activities.
 
       Some games out!
+    description-short: Game development in a co-created independent studio.
     skills: [Java, OpenGL, Android, gradle, git, nginx, Jenkins]
     projects:
       - name: Sacrifices
@@ -40,10 +43,12 @@
         url: https://github.com/spookygames
         skills: [Java, libgdx, robovm, gradle]
   - when: September 2013 - April 2016
+    when-short: 2013 - 2016
     where: Nantes, France
     duration: 30 months
     title: Software Engineer at Meteodyn
     description:
+    description-short: Heavyweight client in C#/Winforms then RESTful API with client/server implementations.
     skills: [C#, Winforms, REST, Visual Studio]
     projects:
       - name: Meteodyn Forecast
@@ -51,22 +56,29 @@
         url: https://meteodyn.com/en/logiciels/cfd-statistical-wind-power-forcasting-software/
         skills: [C#, Winforms, Visual Studio]
       - name: Private wind farm management project
-        description: Development of a REST API and its server- and client-side implementations for a private wind farm modelisation/management software solution.
+        description: Development of a RESTful API and its server- and client-side implementations for a private wind farm modelisation/management software solution.
         skills: [C#, REST, Nancy, RestSharp]
   - when: February 2013 - July 2013
+    when-short: 2013
     where: Kehl, Germany
     duration: 6 months
     title: Software developer at Actimage (internship)
     description: Maintenance and evolution of Actelin, a mobile application for the daily management of type 1 and type 2 diabetes.
+    description-short: Maintenance and evolution of Actelin, a mobile application for the daily management of type 1 and type 2 diabetes.
     url: https://www.actimage.com/en/references/actelin-application-a-destination-diabetiques/
     skills: [Android, iOS, Python, Turbogears]
 
 :hobbies:
   - title: Sport
     description: |
-      - Ultimate
-      - Badminton
-      - Football
+      Ultimate
+      Badminton
+      Football
+  - title: Literature
+    description: |
+      US
+      Russian
+      Graphic novels
 
 :skills:
   - category: Development
@@ -75,15 +87,13 @@
         grade: 5
       - name: C#
         grade: 4
-      - name: Java ecosystem
-        grade: 4
       - name: C/C++
-        grade: 3
+        grade: 2
   - category: Languages
     content:
       - name: French
         grade: 5
-      - name: English (TOEIC 960 in 2012)
+      - name: English
         grade: 4
       - name: Spanish
         grade: 2
@@ -98,14 +108,10 @@
     description:
   - when: 2012
     diploma: MSc, Computer Science and Engineering
-    where: Aalto University (Finland)
+    where: Aalto University, Espoo (Finland)
     description: Erasmus exchange, Q4 2012.
-  - when: 2008 - 2010
-    diploma: French Classes Préparatoires, Physics and Engineering
-    where: Lycée Livet, Nantes (France)
-    description:
   - when: 2008
-    diploma: French « baccalauréat » (A-level), with honors
+    diploma: French « baccalauréat » (A-level)
     where: Lycée George Clemenceau, Nantes (France)
     description:
 
