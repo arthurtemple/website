@@ -7,10 +7,10 @@
 :email: arthur.temple@gmail.com
 :website: https://thorthur.github.io
 :birth: Né le 27/01/1990
-:other-language: cv
-:picture: images/cv.jpg
-:picture_alt: images/cv2.jpg
-:pdf: pdf/cv-fr.pdf
+:other-language: /cv
+:picture: /images/cv.jpg
+:picture_alt: /images/cv2.jpg
+:pdf: /pdf/cv-fr.pdf
 
 :experience:
   - when: Avril 2016 - Février 2018
