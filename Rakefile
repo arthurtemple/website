@@ -17,7 +17,7 @@ task :export do
 end
 
 desc 'Push to output submodule, that\'s a deployment!'
-task :push do
+task :deploy do
 	# Welcome to some awkward git helper
 	# Do not try this at home
 
@@ -32,9 +32,6 @@ task :push do
 	# Push submodules
 	%x[git submodule update]
 	%x[git submodule foreach "git checkout master && git add -A && git commit -m '#{message}' && git push #{remote} #{branch}"]
-
-	# Push root
-	%x[git push #{remote} #{branch}]
 end
 
 desc 'Watch filesystem for a resume to print'
