@@ -11,32 +11,41 @@ $font-family-print: 'Georgia', sans-serif;
 /* Colors */
 
 // Some subtle color palette
-$color-grenadine: #DE413A;
-$color-tawnyport: #5B2C36;
-$color-balletslipper: #EBCDD5;
-$color-butterum: #C58F69;
-$color-navypeony: #233B5D;
-$color-neutralgray: #8F9190;
-$color-shadedpruce: #09585D;
-$color-goldenlime: #9B9740;
-$color-marina: #5285C4;
-$color-autumnmaple: #C26225;
-
-// In layman terms
-$color-red: $color-grenadine;
-$color-purple: $color-tawnyport;
-$color-pink: $color-balletslipper;
-$color-brown: $color-butterum;
-$color-darkblue: $color-navypeony;
-$color-grey: $color-neutralgray;
-$color-darkgreen: $color-shadedpruce;
-$color-lightgreen: $color-goldenlime;
-$color-lightblue: $color-marina;
-$color-orange: $color-autumnmaple;
+$color-transparent: transparent;
 $color-black: black;
 $color-white: white;
+$color-red: #DE413A;	// Grenadine
+$color-purple: #5B2C36;	// Tawny port
+$color-pink: #EBCDD5;	// Ballet slipper
+$color-brown: #C58F69;	// Butterum
+$color-darkblue: #233B5D;	// Navy peony
+$color-grey: #8F9190;	// Neutral gray
+$color-darkgreen: #09585D;	// Shaded pruce
+$color-lightgreen: #9B9740;	// Golden lime
+$color-lightblue: #5285C4;	// Marina
+$color-orange: #C26225;	// Autumn Maple
 $color-darkgrey: darken($color-grey, 35%);
 $color-lightgrey: lighten($color-grey, 38%);
+$color-print-primary: #7788BB;
+$color-print-secondary: lighten($color-print-primary, 20%);
+
+/* Utilities */
+@mixin ratings($rating-symbol-full, $rating-symbol-empty) {
+	$rating-min: 1;
+	$rating-max: 5;
+	$rating-symbols-empty: "";
+	$rating-symbols-full: "";
+	@for $i from $rating-min through $rating-max {
+		$rating-symbols-empty: str-insert($rating-symbols-empty, $rating-symbol-empty, 0);
+		$rating-symbols-full: str-insert($rating-symbols-full, $rating-symbol-full, 0);
+	}
+	@for $i from $rating-min through $rating-max {
+		.rating-#{$i}:before {
+			content: str-insert(str-slice($rating-symbols-empty, $rating-min, $rating-max - $i), str-slice($rating-symbols-full, $rating-min, $i), 0);
+			padding-right: 1em;
+		}
+	}
+}
 
 /* Global */
 
@@ -144,11 +153,11 @@ a {
 		text-align: center;
 		width: 60%;
 		margin-left: 20%;
-		background-color: $color-lightgrey;
+		background-color: $color-print-primary;
 		border-radius: 8px;
-		padding: 2px 0;
+		padding: 2px 0 3px 0;
 		margin-top: 1.2em;
-		margin-bottom: 0.8em;
+		margin-bottom: 0.7em;
 	}
 }
 
@@ -293,10 +302,15 @@ a {
 		}
 	}
 
-	@for $i from 1 through 5 {
-		.rating-#{$i}:before {
-			content: str-insert(str-slice("▢▢▢▢▢", 1, 5 - $i), str-slice("▣▣▣▣▣", 1, $i), 0);
-			padding-right: 1em;
+	@media not print {
+		@include ratings("▣", "▢");
+	}
+	@media print {
+		@include ratings("◼", "◻");
+		@for $i from 1 through 5 {
+			.rating-#{$i}:before {
+				color: $color-print-primary;
+			}
 		}
 	}
 }
@@ -382,8 +396,9 @@ a {
 			}
 
 			@media print {
-				font-size: 11pt;
-				background-color: $color-lightgrey;
+				font-size: 10pt;
+				font-weight: 500;
+				background-color: $color-print-secondary;
 				border-radius: 1px;
 				padding: 2px 2px;
 			}
@@ -401,14 +416,14 @@ a {
 			margin-top: 0.2em;
 			margin-bottom: 0.2em;
 			@media print {
-				padding-left: 7em;
-				font-size: 12pt !important;
+				padding-left: 6.6em;
+				font-size: 13pt !important;
 				font-weight: normal;
 			}
 		}
 
 		.when-short {
-			padding-top: 0.2em;
+			padding-top: 0.3em;
 			text-align: right;
 		}
 
@@ -485,7 +500,7 @@ a {
 		border-radius: 0;
 		padding-left: 0;
 		&:hover {
-			background-color: transparent;
+			background-color: $color-transparent;
 			color: $color-white !important;
 		}
 	}
