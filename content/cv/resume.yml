@@ -1,6 +1,6 @@
 :headline: Résumé
 :lang: en
-:lastupdate: Updated 14 February 2018
+:lastupdate: Updated 15 February 2018
 
 :name: Arthur Templé
 :title: Software Engineer
@@ -88,7 +88,7 @@
       - name: C#
         grade: 4
       - name: C/C++
-        grade: 2
+        grade: 3
   - category: Languages
     content:
       - name: French
@@ -112,7 +112,7 @@
     description: Erasmus exchange, Q4 2012.
   - when: 2008
     diploma: French « baccalauréat » (A-level)
-    where: Lycée George Clemenceau, Nantes (France)
+    where: Lycée Clemenceau, Nantes (France)
     description:
 
 :text:

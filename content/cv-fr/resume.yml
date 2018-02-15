@@ -1,6 +1,6 @@
 :headline: CV
 :lang: fr
-:lastupdate: Mis à jour le 14 février 2018
+:lastupdate: Mis à jour le 15 février 2018
 
 :name: Arthur Templé
 :title: Développement logiciel
@@ -80,7 +80,7 @@
     description: |
       Américaine
       Russe
-      Inattendue
+      Étonnante
 
 :skills:
   - category: Programmation
@@ -90,7 +90,7 @@
       - name: C#
         grade: 4
       - name: C/C++
-        grade: 2
+        grade: 3
   - category: Langues
     content:
       - name: Français
@@ -110,7 +110,7 @@
     description:
   - when: 2012
     diploma: MSc, Computer Science and Engineering
-    where: Aalto University, Espoo (Finlande)
+    where: Aalto University (Finlande)
     description: Échange Erasmus, premier semestre 2012-2013.
   - when: 2008 - 2010
     diploma: CPGE filière PTSI/PT*
