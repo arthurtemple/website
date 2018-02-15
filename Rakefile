@@ -1,10 +1,12 @@
 # Rakefile for that stuff
 
+desc 'Start dev server and watch filesystem (bonsai --cultivate)'
 task :dev do
 	# TODO Use proper bonsai from ruby
 	%x[bonsai --cultivate]
 end
 
+desc 'Export everything to output folder (bonsai --repot)'
 task :export do
 	# Hack: protect submodule from oblivion
 	%x[mv output/.git tmp_git_submodule]
@@ -14,6 +16,7 @@ task :export do
 	%x[mv tmp_git_submodule output/.git]
 end
 
+desc 'Push to output submodule, that\'s a deployment!'
 task :push do
 	# Welcome to some awkward git helper
 	# Do not try this at home
@@ -34,6 +37,7 @@ task :push do
 	%x[git push #{remote} #{branch}]
 end
 
+desc 'Watch filesystem for a resume to print'
 task :devprint do
   require 'watch'
 	Watch.new("{content,templates,public}/**/*") {
@@ -42,6 +46,7 @@ task :devprint do
 	}
 end
 
+desc 'Print resume en+fr'
 task :cvpdf => [:export] do
 	require 'pdfkit'
 	require 'bonsai'
